@@ -1,0 +1,354 @@
+/* Map DocSearch variables to shadcn-style tokens */
+:root {
+    /* Modal + overlay */
+    --docsearch-modal-background: var(--background);
+    /* Shadow should usually be dark, so we use a dark color with opacity, or foreground */
+    --docsearch-modal-shadow: 0 24px 80px oklch(from var(--foreground) l c h / 0.2);
+
+    /* Text colors */
+    --docsearch-text-color: var(--foreground);
+    --docsearch-muted-color: var(--foreground);
+
+    /* Search box */
+    --docsearch-searchbox-background: var(--input);
+    --docsearch-searchbox-focus-background: var(--background);
+
+    /* Hits */
+    --docsearch-hit-background: var(--background);
+    /* Shadow */
+    --docsearch-hit-shadow: 0 1px 0 0 oklch(from var(--border) l c h / 0.5);
+    --docsearch-hit-color: var(--foreground);
+
+    /* Highlight color */
+    --docsearch-highlight-color: var(--accent);
+
+    /* Borders */
+    --docsearch-border-color: var(--border);
+}
+
+/* ------------ Modal shell ------------ */
+
+.DocSearch-Modal {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    color: var(--foreground);
+    box-shadow:
+        0 10px 15px -3px oklch(from var(--foreground) l c h / 0.1),
+        0 4px 6px -4px oklch(from var(--foreground) l c h / 0.1);
+    padding: 0.75rem;
+    position: relative;
+    max-width: 40rem;
+    width: 100%;
+}
+
+/* Header: title + search box */
+.DocSearch-Header {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.75rem 0.5rem;
+}
+
+/* Footer: branding + shortcuts */
+.DocSearch-Footer {
+    background-color: var(--background);
+    color: var(---foreground);
+    border-radius: 10px;
+    height: fit-content;
+    padding: 10px;
+}
+
+.DocSearch-Logo #Layer_1 {
+    width: 65px;
+    margin-left: 5px;
+}
+
+/* ------------ Search box ------------ */
+
+/* Search box wrapper */
+.DocSearch-Form {
+    /* Match shadcn input h-9 (36px) */
+    height: 2.25rem !important;
+    min-height: 2.25rem !important;
+    max-height: 2.25rem !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    border: 1px solid var(--input) !important;
+    /* shadcn input is bg-transparent (or slightly colored in dark mode if configured, but usually transparent) */
+    background-color: transparent !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+    /* shadow-xs approximation */
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 0.5rem !important;
+    margin-bottom: 1.2rem;
+}
+
+/* Input */
+.DocSearch-Input {
+    font-size: 0.875rem !important;
+    /* text-sm */
+    /* Remove default paddings that make it fat */
+    /* Reduced left padding from 2.5rem to 2rem to bring text closer to icon */
+    padding: 0 2.5rem 0 2rem !important;
+    background: transparent !important;
+    color: var(--foreground) !important;
+    height: 100% !important;
+    appearance: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Placeholder */
+.DocSearch-Input::placeholder {
+    color: var(--muted-foreground) !important;
+    opacity: 1 !important;
+}
+
+/* Focus ring similar to shadcn Input */
+/* Note: DocSearch adds 'DocSearch-Form--focus' class usually, or we use :focus-within */
+.DocSearch-Form:focus-within {
+    border-color: var(--ring) !important;
+    outline: none !important;
+    box-shadow:
+        0 0 0 3px oklch(from var(--ring) l c h / 0.5) !important;
+    /* ring-ring/50 ring-[3px] */
+}
+
+/* Ensure icon stays muted even when focused */
+.DocSearch-Form:focus-within .DocSearch-MagnifierLabel,
+.DocSearch-Form:focus-within .DocSearch-MagnifierLabel svg,
+.DocSearch-Form:focus-within .DocSearch-MagnifierLabel path {
+    color: var(--muted-foreground) !important;
+    fill: currentColor !important;
+}
+
+.DocSearch-Dropdown {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Magnifier + reset */
+.DocSearch-MagnifierLabel {
+    color: var(--muted-foreground) !important;
+    /* Adjust icon size/pos if needed */
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    position: absolute !important;
+    left: 0 !important;
+}
+
+.DocSearch-MagnifierLabel svg {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+/* Reset (X) Button */
+.DocSearch-Reset {
+    color: var(--muted-foreground) !important;
+    border-radius: 0 !important;
+    padding: 0 0.5rem !important;
+    width: auto !important;
+    height: 1.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    position: absolute !important;
+    right: 0.5rem !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.DocSearch-Reset:hover {
+    color: var(--foreground) !important;
+    /* Remove bg hover on the separator style usually, or keep it subtle */
+    background: transparent !important;
+}
+
+.DocSearch-Reset svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    display: block !important;
+}
+
+/* Loading Indicator */
+.DocSearch-LoadingIndicator svg {
+    display: none !important;
+}
+
+/* ------------ Hits & Content Layout ------------ */
+
+/* Results container */
+.DocSearch-Hits {
+    padding: 0.5rem 0.25rem;
+}
+
+/* Center Start Screen and No Results */
+.DocSearch-StartScreen,
+.DocSearch-NoResults {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 300px !important;
+    /* Force some height to allow vertical centering */
+    padding: 2rem !important;
+}
+
+/* Hit group/page divider */
+.DocSearch-Hits mark {
+    background: none;
+    color: var(--accent);
+}
+
+/* Individual hit wrapper */
+.DocSearch-Hit {
+    margin: 0.125rem 0.25rem;
+}
+
+/* Hit link block */
+.DocSearch-Hit a {
+    display: block;
+    border-radius: calc(var(--radius) - 2px);
+    padding: 0.5rem 0.625rem;
+    background-color: transparent;
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+/* Hover */
+.DocSearch-Hit a:hover {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+/* Keyboard active/selected item */
+.DocSearch-Hit--active a {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+
+/* Path / breadcrumb text */
+.DocSearch-Hit-path {
+    font-size: 0.75rem;
+    color: var(--foreground);
+}
+
+/* Title, source */
+.DocSearch-Hit-title,
+.DocSearch-Hit-source {
+    font-weight: 500;
+}
+
+/* ------------ Keyboard shortcuts + footer ------------ */
+
+.DocSearch-Commands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Individual key “chip” */
+.DocSearch-Commands-Key {
+    border-radius: calc(var(--radius) - 6px);
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    color: var(--foreground);
+    padding: 0.1rem 0.3rem;
+    font-size: 0.7rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+}
+
+/* Branding text */
+.DocSearch-Logo svg,
+.DocSearch-Logo path {
+    color: var(--foreground);
+    fill: currentColor;
+}
+
+/* ------------ Misc tweaks ------------ */
+
+/* Body/overlay scroll control if needed */
+.DocSearch-Container {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+    background-color: oklch(from var(--background) l c h / 0.8);
+    /* dim backdrop */
+    backdrop-filter: blur(4px);
+    /* optional blur */
+}
+
+/* Optional: adjust column layout spacing */
+.DocSearch-Body {
+    padding: 0.5rem 0.75rem;
+}
+
+/* Tag badges (if present) */
+.DocSearch-Label {
+    margin-left: 5px;
+    border-radius: calc(var(--radius) - 6px);
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+/* Animations */
+@keyframes docsearch-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes docsearch-zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.DocSearch-Container {
+    animation: docsearch-fade-in 0.2s ease-out;
+}
+
+.DocSearch-Modal {
+    animation: docsearch-zoom-in 0.2s ease-out;
+    /* Animate height directly for smoother interaction */
+    transition: height 0.3s cubic-bezier(0.2, 0, 0.2, 1), background-color 0.2s;
+    transform-origin: center top;
+
+    /* Default state (Results): Use a large fixed height relative to viewport */
+    height: 120px;
+    min-height: 120px;
+    /* Consistent baseline */
+    overflow: hidden;
+}
+
+/* Initial state (Start Screen / No Results): Constrain specific height */
+/* This ensures a smooth A -> B transition between 450px and 80vh */
+.DocSearch-Modal:has(.DocSearch-StartScreen),
+.DocSearch-Modal:has(.DocSearch-NoResults) {
+    height: 450px;
+}

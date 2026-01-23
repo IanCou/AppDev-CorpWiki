@@ -54,6 +54,11 @@ const config: Config = {
                 '@': path.resolve(__dirname, 'src'),
               },
             },
+            devServer: {
+              client: {
+                overlay: false
+              }
+            }
           };
         },
       };
