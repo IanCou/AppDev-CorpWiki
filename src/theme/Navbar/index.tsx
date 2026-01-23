@@ -10,53 +10,19 @@ import SearchBar from '@theme/SearchBar';
 
 type Props = WrapperProps<typeof NavbarType>;
 
+// Docusaurus internals (useTOCHighlight) expect a .navbar element to exist for scroll offset calculations.
+// We render a hidden one to prevent crashes while the visible navbar is handled by the new layout.
+export default function NavbarWrapper(props: Props): ReactNode {
+  return <div className="navbar hidden" style={{ display: 'none' }} />;
+}
+/*
 export default function NavbarWrapper(props: Props): ReactNode {
   const { siteConfig } = useDocusaurusContext();
-  const themeConfig = siteConfig.themeConfig as ThemeConfig;
-  const navbar = themeConfig.navbar;
-  const items = navbar?.items ?? [];
-  const logo = navbar.logo;
-
-  const leftItems = items.filter(item => item.position === 'left' || !item.position);
-  const rightItems = items.filter(item => item.position === 'right');
-
-  const logoLink = useBaseUrl(logo?.href || '/');
-  const logoSrc = useBaseUrl(logo?.src);
-
+  // ... (original code preserved in comment if needed, or just deleted)
   return (
-    <header className="navbar z-100 fixed w-full flex h-16 shrink-0 items-center justify-between border-b px-4 bg-background">
-      <div className="flex items-center gap-6">
-        <div className="flex h-14 items-center gap-2 px-4">
-          <img className='h-8' src={logoSrc} />
-          <div className='flex flex-col'>
-            <h1 className='font-semibold'>{navbar.title ?? siteConfig.title}</h1>
-            <p className='text-xs text-muted-foreground'>Tech Operations</p>
-          </div>
-        </div>
-
-        <nav className="flex items-center gap-1">
-          {leftItems.map((item, i) => (
-            <Button key={i} variant="ghost" asChild size="sm">
-              <Link to={(item as any).to} href={(item as any).href} {...item}>
-                {item.label}
-              </Link>
-            </Button>
-          ))}
-        </nav>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <SearchBar />
-        <nav className="flex items-center gap-1">
-          {rightItems.map((item, i) => (
-            <Button key={i} variant="ghost" asChild size="sm">
-              <Link to={(item as any).to} href={(item as any).href} {...item}>
-                {item.label}
-              </Link>
-            </Button>
-          ))}
-        </nav>
-      </div>
-    </header>
+      <header className="...">
+        // ...
+      </header>
   );
 }
+*/

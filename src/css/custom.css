@@ -11,7 +11,7 @@
 html,
 body {
   font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  background-color: var(--sidebar);
   color: var(--foreground);
 }
 
@@ -61,3 +61,38 @@ body {
 .markdown blockquote {
   @apply mt-4 border-l-2 pl-6 italic text-muted-foreground;
 }
+
+/* Docs Enhancements */
+.theme-doc-breadcrumbs {
+  display: none !important;
+}
+
+/* TOC Styling Overrides */
+/* Hide the default border-left from Docusaurus if present/interfering */
+/* And customize link styling */
+.theme-doc-toc-desktop ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.theme-doc-toc-desktop li {
+  margin: 0 !important;
+  padding-bottom: 0.5rem;
+}
+
+.theme-doc-toc-desktop a {
+  @apply text-muted-foreground no-underline transition-colors hover:text-foreground block font-normal;
+  font-size: 0.875rem;
+  /* text-sm */
+}
+
+/* Active State - handled by Docusaurus adding .table-of-contents__link--active */
+.table-of-contents__link--active {
+  @apply text-foreground font-medium;
+  font-weight: 500 !important;
+  color: var(--foreground) !important;
+  /* Add left border or indicator if desired */
+}
+
+/* Fix DocItem container alignment if needed in future */

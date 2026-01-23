@@ -7,7 +7,7 @@ type Props = WrapperProps<typeof DocItemType>;
 
 export default function DocItemWrapper(props: Props): ReactNode {
   return (
-    <div className="container mx-auto max-w-4xl py-10 px-6 font-sans">
+    <div className="w-full max-w-screen-2xl mx-auto">
       <DocItem {...props} />
     </div>
   );
