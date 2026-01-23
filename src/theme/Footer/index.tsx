@@ -32,7 +32,7 @@ export default function CustomFooter(): ReactNode {
   const { copyright, links, logo, style } = footer;
 
   return (
-    <footer className="border-t bg-muted/30 py-12 font-sans">
+    <footer className="border-t bg-[#f4f4f5] dark:bg-[#18181b] py-12 font-sans">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-5 gap-12">
 
         {/* Left Column: Brand & Legal (40%) */}

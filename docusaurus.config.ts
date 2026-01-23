@@ -115,22 +115,15 @@ const config: Config = {
     navbar: {
       title: 'Wiki',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Wiki Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/docs/intro',
           position: 'left',
-          label: 'Tutorial',
-        },
-        { to: '/blog', label: 'Blog', position: 'left' },
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
+          label: 'Documentation',
+        }
       ],
     },
     footer: {

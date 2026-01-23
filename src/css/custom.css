@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./docsearch-ui.css";
@@ -8,6 +10,8 @@
 html,
 body {
   font-family: var(--font-geist-sans);
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 :root {
@@ -47,6 +51,53 @@ body {
   --ifm-font-family-base: var(--font-geist-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   --ifm-heading-font-family: var(--ifm-font-family-base);
   --ifm-font-family-monospace: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace);
+}
+
+/* Fix for Firefox rendering docs footer as black block */
+.theme-doc-footer,
+.pagination-nav {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Shadcn-like Typography Overrides for Markdown Content */
+.markdown h1 {
+  @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-6;
+}
+
+.markdown h2 {
+  @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mt-10 mb-4;
+}
+
+.markdown h3 {
+  @apply scroll-m-20 text-2xl font-semibold tracking-tight mt-8 mb-4;
+}
+
+.markdown p {
+  @apply leading-7 [&:not(:first-child)]:mt-4 mb-3;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply my-4 ml-6 list-disc [&>li]:mt-1;
+}
+
+/* Inline Code */
+.markdown code {
+  @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground;
+}
+
+/* Code Blocks (Pre) - Forced Dark Theme matching Shadcn */
+/* .markdown pre {
+  padding: 1rem;
+} */
+
+.markdown pre code {
+  @apply bg-transparent p-0 text-inherit font-normal;
+}
+
+.markdown blockquote {
+  @apply mt-4 border-l-2 pl-6 italic text-muted-foreground;
 }
 
 .dark {

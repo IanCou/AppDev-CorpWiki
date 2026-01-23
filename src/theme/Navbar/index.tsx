@@ -24,7 +24,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
   const logoSrc = useBaseUrl(logo?.src);
 
   return (
-    <header className="flex h-16 shrink-0 items-center justify-between border-b px-4 bg-background">
+    <header className="navbar z-100 fixed w-full flex h-16 shrink-0 items-center justify-between border-b px-4 bg-background">
       <div className="flex items-center gap-6">
         <div className="flex h-14 items-center gap-2 px-4">
           <img className='h-8' src={logoSrc} />
