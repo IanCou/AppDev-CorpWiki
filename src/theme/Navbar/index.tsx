@@ -26,10 +26,13 @@ export default function NavbarWrapper(props: Props): ReactNode {
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b px-4 bg-background">
       <div className="flex items-center gap-6">
-        <Link to={logoLink} className="flex items-center gap-2 font-bold no-underline text-foreground hover:no-underline hover:text-foreground">
-          {logoSrc && <img src={logoSrc} alt={logo?.alt} className="h-8 w-8" />}
-          <span>{navbar.title ?? siteConfig.title}</span>
-        </Link>
+        <div className="flex h-14 items-center gap-2 px-4">
+          <img className='h-8' src={logoSrc} />
+          <div className='flex flex-col'>
+            <h1 className='font-semibold'>{navbar.title ?? siteConfig.title}</h1>
+            <p className='text-xs text-muted-foreground'>Tech Operations</p>
+          </div>
+        </div>
 
         <nav className="flex items-center gap-1">
           {leftItems.map((item, i) => (

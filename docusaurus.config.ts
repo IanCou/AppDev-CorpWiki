@@ -146,11 +146,11 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'Social Media',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Instagram',
+              href: 'https://instagram.com/@appdev_umd',
             },
             {
               label: 'Discord',
@@ -176,7 +176,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Atheesh Thirumalairajan`,
     },
     prism: {
       theme: prismThemes.github,

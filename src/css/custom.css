@@ -1,8 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./docsearch-ui.css";
+@import "./fonts.css";
 
 @custom-variant dark (&:is(.dark *));
+
+html,
+body {
+  font-family: var(--font-geist-sans);
+}
 
 :root {
   --radius: 0.65rem;
@@ -37,6 +43,10 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.712 0.194 13.428);
+
+  --ifm-font-family-base: var(--font-geist-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+  --ifm-font-family-monospace: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, "Liberation Mono", "Courier New", monospace);
 }
 
 .dark {
@@ -75,6 +85,11 @@
 
 
 @theme inline {
+  --font-sans: "Geist Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    "Liberation Mono", "Courier New", monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
