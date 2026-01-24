@@ -93,8 +93,9 @@ const config: Config = {
   themeConfig: {
     algolia: {
       apiKey: process.env.ALGOLIA_API_KEY,
-      indexName: "wiki",
+      indexName: "wiki_appdevclub_com_bn4x3t76rm_pages",
       appId: process.env.ALGOLIA_APP_ID,
+      contextualSearch: false,
     },
 
     // Replace with your project's social card
