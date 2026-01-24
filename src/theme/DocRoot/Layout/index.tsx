@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import SearchBarWrapper from '@/theme/SearchBar';
 import { ModeToggle } from '@/components/mode-toggle';
+import appconfig from '@/appconfig';
 
 export default function DocRootLayout({ children }: { children: React.ReactNode }) {
     const sidebar = useDocsSidebar();
@@ -70,6 +71,7 @@ export default function DocRootLayout({ children }: { children: React.ReactNode 
                     }}
                 >
                     {children}
+                    <p className="text-xs text-muted-foreground">{appconfig.copyrightText}</p>
                 </div>
             </SidebarInset>
         </SidebarProvider>

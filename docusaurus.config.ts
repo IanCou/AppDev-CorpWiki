@@ -3,13 +3,14 @@ import path from 'path';
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import appconfig from './src/appconfig';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
   title: 'App Dev Wiki',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: appconfig.logo,
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -74,27 +75,13 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/candiedoperation/AppDev-CorpWiki/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/candiedoperation/AppDev-CorpWiki/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -116,65 +103,6 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
 
-    navbar: {
-      title: 'Wiki',
-      logo: {
-        alt: 'Wiki Logo',
-        src: 'img/logo.svg',
-      },
-      items: [
-        {
-          to: '/docs/intro',
-          position: 'left',
-          label: 'Documentation',
-        }
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Social Media',
-          items: [
-            {
-              label: 'Instagram',
-              href: 'https://instagram.com/@appdev_umd',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Atheesh Thirumalairajan`,
-    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,

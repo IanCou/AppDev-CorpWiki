@@ -1,35 +1,13 @@
 import React, { type ReactNode } from 'react';
-import { useThemeConfig } from '@docusaurus/theme-common';
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import Footer from '@theme-original/Footer';
+import type FooterType from '@theme/Footer';
+import type { WrapperProps } from '@docusaurus/types';
 
-function FooterLink({ item }: { item: any }) {
-  const { to, href, label, prependBaseUrlToHref, ...props } = item;
-  const toUrl = useBaseUrl(to);
-  const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
+type Props = WrapperProps<typeof FooterType>;
 
+export default function FooterWrapper(props: Props): ReactNode {
   return (
-    <Link
-      className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-      {...(href
-        ? {
-          href: prependBaseUrlToHref ? normalizedHref : href,
-        }
-        : {
-          to: toUrl,
-        })}
-      {...props}>
-      {label}
-    </Link>
+    /* We Dont Need a Footer & We Dont Support its Design Yet */
+    <></>
   );
-}
-
-export default function CustomFooter(): ReactNode {
-  const { footer } = useThemeConfig();
-  if (!footer) {
-    return null;
-  }
-  const { copyright, links, logo, style } = footer;
-
-  return null; // Temporarily hidden
 }

@@ -81,6 +81,11 @@ body {
   padding-bottom: 0.5rem;
 }
 
+/* Nested indentation for h3, h4, etc. */
+.theme-doc-toc-desktop ul ul {
+  padding-left: 0.75rem !important;
+}
+
 .theme-doc-toc-desktop a {
   @apply text-muted-foreground no-underline transition-colors hover:text-foreground block font-normal;
   font-size: 0.875rem;
@@ -90,8 +95,8 @@ body {
 /* Active State - handled by Docusaurus adding .table-of-contents__link--active */
 .table-of-contents__link--active,
 .theme-doc-toc-desktop a.table-of-contents__link--active {
-  @apply text-foreground font-medium;
-  font-weight: 500 !important;
+  @apply text-foreground;
+  font-weight: 600 !important;
   color: hsl(var(--foreground)) !important;
   border-left: 2px solid hsl(var(--primary));
   padding-left: 0.75rem;

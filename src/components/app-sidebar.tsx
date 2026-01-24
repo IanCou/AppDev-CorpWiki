@@ -16,6 +16,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+import appconfig from "@/appconfig"
+
 export function AppSidebar({ items, ...props }: React.ComponentProps<typeof Sidebar> & { items: any[] }) {
   return (
     <Sidebar variant="inset" {...props}>
@@ -24,12 +26,12 @@ export function AppSidebar({ items, ...props }: React.ComponentProps<typeof Side
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="/">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+                <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <img src={appconfig.logo} alt="Logo" />
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">AppDev Corp</span>
-                  <span className="truncate text-xs">Documentation</span>
+                <div className="grid flex-1 text-left text-sm leading-tight font-semibold">
+                  <span className="truncate">{appconfig.title}</span>
+                  <span className="truncate text-xs">{appconfig.description}</span>
                 </div>
               </a>
             </SidebarMenuButton>
