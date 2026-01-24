@@ -19,7 +19,11 @@ import {
 
 // Helper to recursively check if an item or its children are active
 const checkIsActive = (item: any, pathname: string): boolean => {
-  if (item.href === pathname) return true;
+  const normalize = (str: string) => str.replace(/\/$/, "");
+  const normalizedHref = normalize(item.href || "");
+  const normalizedPath = normalize(pathname);
+
+  if (normalizedHref === normalizedPath) return true;
   if (item.items && item.items.length > 0) {
     return item.items.some((child: any) => checkIsActive(child, pathname));
   }

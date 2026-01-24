@@ -100,8 +100,7 @@ const config: Config = {
       contextualSearch: false,
     },
 
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/wiki-preview-card.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },
