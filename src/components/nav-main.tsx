@@ -67,7 +67,7 @@ export function NavMain({ items }: { items: any[] }) {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Documentation</SidebarGroupLabel>
+      <SidebarGroupLabel>Wiki</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item, index) => (
           <SidebarItemRenderer key={index} item={item} />
