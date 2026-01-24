@@ -78,7 +78,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/candiedoperation/AppDev-CorpWiki/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/candiedoperation/AppDev-CorpWiki/tree/master/',
         },
 
         blog: false,
