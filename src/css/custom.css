@@ -104,3 +104,8 @@ body {
 }
 
 /* Fix DocItem container alignment if needed in future */
+
+/* Heading Anchors */
+.hash-link {
+  @apply text-muted-foreground pl-2 no-underline hover:no-underline;
+}
