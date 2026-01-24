@@ -49,10 +49,9 @@ body {
   @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground;
 }
 
-/* Code Blocks (Pre) - Forced Dark Theme matching Shadcn */
-/* .markdown pre {
-  padding: 1rem;
-} */
+.markdown a:hover {
+  @apply underline;
+}
 
 .markdown pre code {
   @apply bg-transparent p-0 text-inherit font-normal;
@@ -84,6 +83,7 @@ body {
 /* Nested indentation for h3, h4, etc. */
 .theme-doc-toc-desktop ul ul {
   padding-left: 0.75rem !important;
+  margin-top: 0.5rem !important;
 }
 
 .theme-doc-toc-desktop a {

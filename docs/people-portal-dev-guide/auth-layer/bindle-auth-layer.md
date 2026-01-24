@@ -1,10 +1,13 @@
+---
+sidebar_position: 2
+---
+
 # Bindle Authorization Layer
-
-:::info
-This documentation covers the internal workings of the Bindle Authorization Layer. for API usage refer to the [API Reference](https://corp.appdevlcub.com/api/docs).
-:::
-
 The Bindle Authorization Layer is the core security mechanism for the People Portal. It enables granular, resource-specific permission management (Bindles) on top of the standard OIDC authentication. It allows teams to manage access to shared resources (like GitHub repositories, Slack channels, etc.) by assigning specific "bindles" to subteams.
+
+:::tip Interested in Internal Workings?
+This documentation provides a logical overview of the Bindle Authorization Layer. For detailed API usage and implementation details refer to the [People Portal API Reference](https://corp.appdevclub.com/api/docs).
+:::
 
 ## Security Middleware Operation
 
@@ -95,7 +98,7 @@ sequenceDiagram
 
 "Bindles" are the atomic units of permission within the People Portal ecosystem. They represent a specific capability within a shared resource (e.g., `repo:allowcreate` for Gitea, `slack:allowpost` for Slack).
 
-### 1. Bindle Definitions
+### Bindle Definitions
 Bindles are defined by `SharedResourceClient` implementations. Each client (Gitea, Slack, Apple Account, etc.) defines the bindles it supports.
 
 **Structure of a Bindle:**
@@ -119,7 +122,7 @@ private readonly supportedBindles: BindlePermissionMap = {
 }
 ```
 
-### 2. Registering Shared Resources
+### Registering Shared Resources
 For a Bindle to be recognized by the system, its Client must be registered in the global configuration at `src/config.ts`. This registry allows the `BindleController` to aggregate all available permissions dynamically.
 
 ```ts
@@ -131,7 +134,7 @@ export const ENABLED_SHARED_RESOURCES: { [key: string]: SharedResourceClient } =
 }
 ```
 
-### 3. Team Attribute Storage
+### Team Attribute Storage
 Bindle assignments are stored directly on the Team (or Subteam) objects within Authentik as `attributes`. This allows permissions to persist alongside the group structure.
 
 **Data Layout in Authentik Attributes:**
@@ -149,7 +152,7 @@ Bindle assignments are stored directly on the Team (or Subteam) objects within A
 }
 ```
 
-### 4. SharedResourceClient Interface
+### SharedResourceClient Interface
 To implement a new integration that supports Bindles, you must implement the `SharedResourceClient` interface.
 
 ```ts
@@ -168,7 +171,7 @@ export interface SharedResourceClient {
 }
 ```
 
-### 5. Effective Permission Calculation
+### Effective Permission Calculation
 The `BindleController.getEffectivePermissionSet` method is responsible for flattening the complex hierarchy of subteams and assignments into a simple set of active permissions for a user.
 
 It performs the following logic:
@@ -179,7 +182,7 @@ It performs the following logic:
 
 This "Effective Permission Set" is what the middleware checks against the required scopes.
 
-### 6. Extending the System
+### Extending the System
 To add a new Bindle:
 1.  **Choose or Create Client**: Identify the `SharedResourceClient` that manages the resource (or create a new one in `src/clients/`).
 2.  **Define Bindle**: Add the new permission key and description to the `supportedBindles` map in the client.

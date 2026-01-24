@@ -1,4 +1,5 @@
-
+import { useLocation } from "@docusaurus/router";
+import { useEffect, useState } from "react";
 import { ChevronRight, FileText, Folder } from "lucide-react"
 import Link from '@docusaurus/Link';
 
@@ -14,27 +15,54 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+
+// Helper to recursively check if an item or its children are active
+const checkIsActive = (item: any, pathname: string): boolean => {
+  if (item.href === pathname) return true;
+  if (item.items && item.items.length > 0) {
+    return item.items.some((child: any) => checkIsActive(child, pathname));
+  }
+  return false;
+};
 
 // Simple recursive component for rendering sidebar items
 function SidebarItemRenderer({ item }: { item: any }) {
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  // State for collapsible
+  // We initialize based on whether we are currently active, 
+  // but we also listen to changes in pathname to auto-expand.
+  const [isOpen, setIsOpen] = useState(() => checkIsActive(item, pathname));
+
+  useEffect(() => {
+    if (checkIsActive(item, pathname)) {
+      setIsOpen(true);
+    }
+  }, [pathname, item]);
+
   // If it has "items" array, treat as category
   if (item.items && item.items.length > 0) {
+    const isActiveCategory = checkIsActive(item, pathname);
+
     return (
       <Collapsible
         key={item.label}
         asChild
-        defaultOpen={!item.collapsed}
+        open={isOpen}
+        onOpenChange={setIsOpen}
         className="group/collapsible"
       >
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
-            <SidebarMenuButton tooltip={item.label} className="h-auto p-2 [&>span]:whitespace-normal [&>span]:text-wrap text-left">
-              <Folder className="mr-2 size-4 shrink-0" />
-              <span className="flex-1">{item.label}</span>
-              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 shrink-0" />
+            <SidebarMenuButton
+              tooltip={item.label}
+              className="h-auto py-2 px-2 whitespace-normal [&>span]:whitespace-normal [&>span]:text-wrap text-left items-start"
+            >
+              <Folder className="mr-2 size-4 shrink-0 mt-0.5" />
+              <span className="flex-1 leading-tight">{item.label}</span>
+              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 shrink-0 mt-0.5" />
             </SidebarMenuButton>
           </CollapsibleTrigger>
           <CollapsibleContent>
@@ -50,12 +78,19 @@ function SidebarItemRenderer({ item }: { item: any }) {
   }
 
   // Otherwise treat as link
+  const isActiveLink = item.href === pathname;
+
   return (
     <SidebarMenuItem key={item.label}>
-      <SidebarMenuButton asChild isActive={item.active} tooltip={item.label} className="h-auto p-2 [&>span]:whitespace-normal [&>span]:text-wrap text-left">
-        <Link to={item.href} className="flex items-center w-full">
-          <FileText className="mr-2 size-4 shrink-0" />
-          <span className="flex-1">{item.label}</span>
+      <SidebarMenuButton
+        asChild
+        isActive={isActiveLink}
+        tooltip={item.label}
+        className="h-auto py-2 px-2 whitespace-normal [&>span]:whitespace-normal [&>span]:text-wrap text-left items-start"
+      >
+        <Link to={item.href} className="flex w-full items-start">
+          <FileText className="mr-2 size-4 shrink-0 mt-0.5" />
+          <span className="flex-1 leading-tight">{item.label}</span>
         </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
