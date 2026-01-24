@@ -31,10 +31,10 @@ function SidebarItemRenderer({ item }: { item: any }) {
       >
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
-            <SidebarMenuButton tooltip={item.label}>
-              <Folder className="mr-2 size-4" />
-              <span>{item.label}</span>
-              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+            <SidebarMenuButton tooltip={item.label} className="h-auto p-2 [&>span]:whitespace-normal [&>span]:text-wrap text-left">
+              <Folder className="mr-2 size-4 shrink-0" />
+              <span className="flex-1">{item.label}</span>
+              <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 shrink-0" />
             </SidebarMenuButton>
           </CollapsibleTrigger>
           <CollapsibleContent>
@@ -52,10 +52,10 @@ function SidebarItemRenderer({ item }: { item: any }) {
   // Otherwise treat as link
   return (
     <SidebarMenuItem key={item.label}>
-      <SidebarMenuButton asChild isActive={item.active} tooltip={item.label}>
-        <Link to={item.href}>
-          <FileText className="mr-2 size-4" />
-          <span>{item.label}</span>
+      <SidebarMenuButton asChild isActive={item.active} tooltip={item.label} className="h-auto p-2 [&>span]:whitespace-normal [&>span]:text-wrap text-left">
+        <Link to={item.href} className="flex items-center w-full">
+          <FileText className="mr-2 size-4 shrink-0" />
+          <span className="flex-1">{item.label}</span>
         </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>

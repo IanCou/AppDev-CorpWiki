@@ -63,7 +63,7 @@ export default function DocRootLayout({ children }: { children: React.ReactNode 
                 </header>
                 <div
                     id="docusaurus-base-url-issue-banner"
-                    className="flex flex-1 flex-col gap-4 p-6 pt-0 overflow-y-auto"
+                    className="flex flex-1 flex-col gap-4 p-6 pt-0 mt-2 overflow-y-auto"
                     onScroll={(e) => {
                         // Dispatch a scroll event to document so useTOCHighlight can detect it
                         const scrollEvent = new Event('scroll', { bubbles: true });
@@ -71,7 +71,7 @@ export default function DocRootLayout({ children }: { children: React.ReactNode 
                     }}
                 >
                     {children}
-                    <p className="text-xs text-muted-foreground">{appconfig.copyrightText}</p>
+                    <p className="mt-auto text-xs text-muted-foreground">{appconfig.copyrightText}</p>
                 </div>
             </SidebarInset>
         </SidebarProvider>
