@@ -88,11 +88,14 @@ body {
 }
 
 /* Active State - handled by Docusaurus adding .table-of-contents__link--active */
-.table-of-contents__link--active {
+.table-of-contents__link--active,
+.theme-doc-toc-desktop a.table-of-contents__link--active {
   @apply text-foreground font-medium;
   font-weight: 500 !important;
-  color: var(--foreground) !important;
-  /* Add left border or indicator if desired */
+  color: hsl(var(--foreground)) !important;
+  border-left: 2px solid hsl(var(--primary));
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
 }
 
 /* Fix DocItem container alignment if needed in future */

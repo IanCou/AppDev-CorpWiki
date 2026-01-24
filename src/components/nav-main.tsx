@@ -1,5 +1,6 @@
 
 import { ChevronRight, FileText, Folder } from "lucide-react"
+import Link from '@docusaurus/Link';
 
 import {
   Collapsible,
@@ -52,10 +53,10 @@ function SidebarItemRenderer({ item }: { item: any }) {
   return (
     <SidebarMenuItem key={item.label}>
       <SidebarMenuButton asChild isActive={item.active} tooltip={item.label}>
-        <a href={item.href}>
+        <Link to={item.href}>
           <FileText className="mr-2 size-4" />
           <span>{item.label}</span>
-        </a>
+        </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
   )

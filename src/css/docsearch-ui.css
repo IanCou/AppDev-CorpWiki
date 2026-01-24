@@ -287,9 +287,9 @@
     align-items: flex-start;
     justify-content: center;
     padding-top: 10vh;
-    background-color: oklch(from var(--background) l c h / 0.8);
+    background-color: oklch(from var(--background) l c h / 0.4);
     /* dim backdrop */
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
     /* optional blur */
 }
 
@@ -338,6 +338,7 @@
     /* Animate height directly for smoother interaction */
     transition: height 0.3s cubic-bezier(0.2, 0, 0.2, 1), background-color 0.2s;
     transform-origin: center top;
+    box-shadow: none !important;
 
     /* Default state (Results): Use a large fixed height relative to viewport */
     height: 120px;

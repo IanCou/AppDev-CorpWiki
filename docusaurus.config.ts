@@ -65,6 +65,10 @@ const config: Config = {
     },
   ],
 
+  clientModules: [
+    require.resolve('./src/client-modules/theme-sync.ts'),
+  ],
+
   presets: [
     [
       'classic',
