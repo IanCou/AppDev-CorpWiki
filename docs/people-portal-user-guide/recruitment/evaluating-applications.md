@@ -7,6 +7,7 @@ sidebar_position: 3
 The People Portal provides a set of tools to help you review, track, and manage candidates throughout the hiring lifecycle.
 
 ## The Kanban Board
+TODO insert screenshot of full kanban
 
 The **Applications** tab features a Kanban board for visual candidate management. Applications move through the following stages:
 
@@ -27,18 +28,26 @@ When you change a candidate's stage, they will receive an automated email notifi
 
 Click on any candidate card to open the **Application Details** modal.
 
+![Sample Applicant](/img/people-portal/Applicant.png)
+
+
 ### Application Info
-*   **Profile & Resume:** View their contact info, external links, and download their resume securely.
+*   **Profile & Resume:** View their contact info, external links, and view their resume.
 *   **Responses:** Read their answers to general and role-specific questions.
 *   **Role Preferences:** See which roles they ranked highest if they applied for multiple positions.
 
 ### Feedback & Ratings
-*   **Star Rating:** Rate candidates on a 5-star scale. This is useful for quick sorting and prioritizing candidates in the pipeline.
+*   **Star Rating:** Rate candidates on a 5-star scale. This is visible to anyone who has access to the recruiting page.
 *   **Notes:** Add internal notes or interview feedback.
     *   Notes support markdown formatting.
-    *   Each note is automatically stamped with the author's name and a timestamp, creating a transparent history of team feedback.
+    *   Each note is automatically stamped with the author's name and a timestamp. Notes are accessible to anyone who has access to the recruiting page for that team.
+
+### Changing Stages
+Simply use the buttons at the top to move the applicant to another stage.
 
 ## Recruitment Statistics
+
+TODO insert screenshot of completed page
 
 The **Statistics** tab provides insights into your hiring funnel. It shows the number of applicants at each stage and breakdowns per role, helping you identify:
 *   Which roles receive the most interest.
