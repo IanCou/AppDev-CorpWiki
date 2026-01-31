@@ -63,7 +63,7 @@ body {
 
 /* Images */
 .markdown img {
-  @apply rounded-md border border-border shadow-sm my-4;
+  @apply rounded-md border border-border shadow-sm my-8 block mx-auto max-w-[700px] w-full;
 }
 
 /* Docs Enhancements */
