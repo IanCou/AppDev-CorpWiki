@@ -49,8 +49,9 @@ body {
   @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground;
 }
 
-.markdown a:hover {
-  @apply underline;
+
+.markdown a {
+  @apply font-medium text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary;
 }
 
 .markdown pre code {
@@ -110,7 +111,33 @@ body {
 
 /* Fix DocItem container alignment if needed in future */
 
+
 /* Heading Anchors */
 .hash-link {
   @apply text-muted-foreground pl-2 no-underline hover:no-underline;
+}
+
+/* Shadcn-like Table Overrides for Markdown Content */
+.markdown table {
+  @apply table w-full caption-bottom text-sm border-separate border-spacing-0 my-6 rounded-md border border-border overflow-hidden;
+}
+
+.markdown table tr {
+  @apply bg-transparent transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted;
+}
+
+.markdown table th {
+  @apply h-10 px-4 text-left align-middle font-medium text-muted-foreground border-b border-border bg-transparent [&:has([role=checkbox])]:pr-0;
+}
+
+.markdown table td {
+  @apply p-2 align-middle border-b border-border [&:has([role=checkbox])]:pr-0;
+}
+
+.markdown table tr:last-child td {
+  @apply border-b-0;
+}
+
+.markdown table caption {
+  @apply mt-4 text-sm text-muted-foreground;
 }
