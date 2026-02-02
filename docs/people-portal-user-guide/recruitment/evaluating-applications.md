@@ -7,7 +7,7 @@ sidebar_position: 3
 The People Portal provides a set of tools to help you review, track, and manage candidates throughout the hiring lifecycle.
 
 ## The Kanban Board
-TODO insert screenshot of full kanban
+![Recruitment Kanban](/img/people-portal/RecruitmentKanban.png)
 
 The **Applications** tab features a Kanban board for visual candidate management. Applications move through the following stages:
 
@@ -43,7 +43,20 @@ Click on any candidate card to open the **Application Details** modal.
     *   Each note is automatically stamped with the author's name and a timestamp. Notes are accessible to anyone who has access to the recruiting page for that team.
 
 ### Changing Stages
-Simply use the buttons at the top to move the applicant to another stage.
+
+Moving an applicant through the pipeline is done using the stage buttons at the top of the application modal or by dragging their card to different columns in the Kanban.
+
+*   **Interviewing:** You must interview a candidate before moving them to the **Hired** stage. When scheduling an interview:
+    *   Provide the candidate with a Google Calendar link for scheduling. See how to do so <u>[here](https://support.google.com/calendar/answer/10729749?hl=en)</u>.
+
+![Interviewing Process](/img/people-portal/Interview.png)
+
+    *   Send them **Interview Guidelines** (see below).
+*   **Hiring:** To move a candidate to the **Hired** stage, you must select the specific role they are being hired for from the dropdown menu.
+
+## Interview Guidelines
+
+To ensure a consistent and high-quality interview process, please provide the candidate some guidelines. Some examples include having VSCode installed/set up, preferring TypeScript for the interview questions, etc.
 
 ## Recruitment Statistics
 
