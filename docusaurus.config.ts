@@ -93,12 +93,14 @@ const config: Config = {
 
 
   themeConfig: {
-    algolia: {
-      apiKey: process.env.ALGOLIA_API_KEY,
-      indexName: "wiki_appdevclub_com_bn4x3t76rm_pages",
-      appId: process.env.ALGOLIA_APP_ID,
-      contextualSearch: false,
-    },
+    ...(process.env.ALGOLIA_API_KEY && process.env.ALGOLIA_APP_ID ? {
+      algolia: {
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: "wiki_appdevclub_com_bn4x3t76rm_pages",
+        appId: process.env.ALGOLIA_APP_ID,
+        contextualSearch: false,
+      },
+    } : {}),
 
     image: 'img/wiki-preview-card.png',
     colorMode: {

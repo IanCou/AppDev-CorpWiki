@@ -64,7 +64,7 @@ sequenceDiagram
         end
 
         rect rgba(200, 200, 200, 0.1)
-            note right of Auth: 5. Owner Bypass Check
+            note right of Auth: 5. Owner Bypass Check & Executive Authorization Layer Override
             Auth->>Auth: Check Recursive Object Ownership
             alt User is Owner (or Parent Team Owner)
                 Auth-->>Express: Resolve (Allow Access - Bypass Checks)

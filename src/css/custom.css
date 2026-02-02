@@ -61,6 +61,11 @@ body {
   @apply mt-4 border-l-2 pl-6 italic text-muted-foreground;
 }
 
+/* Images */
+.markdown img {
+  @apply rounded-md border border-border shadow-sm my-4;
+}
+
 /* Docs Enhancements */
 .theme-doc-breadcrumbs {
   display: none !important;
